@@ -8,7 +8,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
 <HelmetProvider>
 <CssBaseline/>
+<div onClick={(e)=>e.preventDefault()}>
 <App/>
+</div>
+
 </HelmetProvider>
   
 )

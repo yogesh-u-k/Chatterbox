@@ -1,12 +1,17 @@
-import { AppBar, IconButton, Toolbar, Tooltip } from '@mui/material'
+import { AppBar, Backdrop, IconButton, Toolbar, Tooltip } from '@mui/material'
 import {green } from '../constants/color'
 import { Box, Typography } from '@mui/material'
-import React, { Suspense, useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import {Menu as MenuIcon, Search as SearchIcon, Add as AddIcon, Group as GroupIcon, Logout as LogoutIcon, Notifications as  NotificationsIcon} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import SearchDialog from '../specific/Search';
+
 
 const Header = () => {
+
+  const SearchDialog = lazy(()=>import('../specific/Search'))
+  const NotificationDialog = lazy(()=>import('../specific/Notification'))
+  const NewGroupDialog = lazy(()=>import('../specific/NewGroup'))
+
 
   const navigate = useNavigate();
 
@@ -37,7 +42,7 @@ const Header = () => {
     <AppBar position='static' sx={{bgcolor:green}}>
         <Toolbar>
             <Typography variant='h6'  sx={{ display: { xs: 'none', sm: 'block' }}}>Chatterbox</Typography>
-            <Box sx={{ display: { xs: 'block', sm: 'none' }}} ><IconButton color='inherit' onClick={handleMobile}>
+            <Box sx={{ display: { xs: 'block', sm: 'none' }}}  ><IconButton color='inherit'size='large' onClick={handleMobile}>
               <MenuIcon></MenuIcon>
               </IconButton></Box>
               <Box sx={{ flexGrow: 1 }}>
@@ -47,7 +52,7 @@ const Header = () => {
               <Box>
                <IconBtn title="Search" icon={<SearchIcon/>} onClick={openSearch}/>
           
-              <IconBtn title="New Group" icon={<AddIcon/>} onClick={openNewGroup}/>
+              <IconBtn title="New Group" icon={<AddIcon/> } onClick={openNewGroup}/>
               
               <IconBtn title="Groups" icon={<GroupIcon/>} onClick={navigateToGroup}/>
               
@@ -56,17 +61,37 @@ const Header = () => {
               <IconBtn title="Logout" icon={<LogoutIcon/>}  onClick={logoutHandler}/>
               </Box>
         </Toolbar>
-    </AppBar>
- </Box>
-{
+    </AppBar> </Box>
 
+
+{
 isSearch && (
 
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<Backdrop open/>}>
      <SearchDialog/>
      </Suspense>
 )
 }
+
+{
+  isNotification && (
+
+    <Suspense fallback={<Backdrop open/>}>
+       <NotificationDialog/>
+       </Suspense>
+  )
+}
+
+{
+  isNewGroup && (
+
+    <Suspense fallback={<Backdrop open/>}>
+       <NewGroupDialog/>
+       </Suspense>
+  )
+}
+
+
  
 
  </>
@@ -77,7 +102,7 @@ const IconBtn = ({title,icon,onClick}) => {
 
   return (  
     <Tooltip title={title}>
-        <IconButton color='inherit' size='large' onClick={onClick}>
+        <IconButton color='inherit' size='large' onClick={onClick} sx={{":hover":{bgcolor:"grey"}}} >
           {icon}
 
         </IconButton>
