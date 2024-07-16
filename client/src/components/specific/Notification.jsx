@@ -3,12 +3,9 @@ import {
   Button,
   Dialog,
   DialogTitle,
-  InputAdornment,
-  List,
   ListItem,
   Stack,
-  TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import React, { memo } from "react";
 import { sampleNotifications } from "../constants/sampledata";

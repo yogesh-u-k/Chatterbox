@@ -1,12 +1,15 @@
-import React from 'react'
-import AppLayout from '../components/layout/AppLayout'
+import React from "react";
+import AppLayout from "../components/layout/AppLayout";
+import { Box, Typography } from "@mui/material";
 
 const Home = () => {
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <Box bgcolor={"rgba(0,0,0,0.1)"} height={"100%"} he>
+      <Typography p="1rem" textAlign={"center"} variant="h5">
+        Select a friend to chat
+      </Typography>
+    </Box>
+  );
+};
 
 export default AppLayout()(Home);

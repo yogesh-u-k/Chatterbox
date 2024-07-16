@@ -56,3 +56,41 @@ export const sampleNotifications = [
       _id: "2",
     },
   ];
+
+  export const sampleMessage  = [
+    {
+      attachements:[  
+        {
+          public_id:"uyiy",
+          url:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+         
+        }
+      ],
+      content:"Hello",
+      _id:"1",
+      sender:{
+        _id:"user_id",
+        name:"Yogesh Kumbhar",
+    },
+    chat:"ChatId",
+    createAt:"2024-02-12T10:41:30.630Z"
+  },
+  {
+    attachements:[  
+      {
+        public_id:"uyiy",
+        url:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+       
+      }
+    ],
+    content:"Hello",
+    _id:"1",
+    sender:{
+      _id:"kjdhj",
+      name:"Yogesh Kumbhar",
+      
+  },
+  chat:"ChatId",
+  createAt:"2024-02-12T10:41:30.630Z"
+}
+  ]
